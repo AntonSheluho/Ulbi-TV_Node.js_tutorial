@@ -14,7 +14,17 @@ const fs = require('fs')
 //     // console.log('not error')
 // })
 
-fs.rmdir(path.resolve(__dirname, 'testFolder'), (er) => {
+// fs.rmdir(path.resolve(__dirname, 'testFolder'), (er) => {
+//     if (er) console.log(er);
+//     console.log('delete folder')
+// })
+const user = `{
+    "id": "1",
+    "name": "Anton",
+    "hello": "world"
+}`
+
+fs.writeFile(path.resolve(__dirname, 'user.json'), user, (er) => {
     if (er) console.log(er);
-    console.log('delete folder')
+    console.log('error writeFile')
 })

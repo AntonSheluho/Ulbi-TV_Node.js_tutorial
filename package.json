@@ -1,6 +1,11 @@
 {
   "dependencies": {
+    "cross": "^1.0.0",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.1",
     "process": "^0.11.10"
+  },
+  "script": {
+    "start": "cross-env PORT=5000 NODE_ENV=production node ./index.js"
   }
 }

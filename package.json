@@ -1,11 +1,31 @@
 {
+  "name": "ulbi-tv_node.js_tutorial",
+  "version": "1.0.0",
+  "description": "Ulbi-TV tutorial ",
+  "main": "index.js",
+  "devDependencies": {},
   "dependencies": {
     "cross": "^1.0.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19",
     "process": "^0.11.10"
   },
-  "script": {
-    "start": "cross-env PORT=5000 NODE_ENV=production node ./index.js"
-  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntonSheluho/Ulbi-TV_Node.js_tutorial.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Anton Shalukho <antonshalukho@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AntonSheluho/Ulbi-TV_Node.js_tutorial/issues"
+  },
+  "homepage": "https://github.com/AntonSheluho/Ulbi-TV_Node.js_tutorial#readme"
 }

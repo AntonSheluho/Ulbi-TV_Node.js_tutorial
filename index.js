@@ -1,23 +1,26 @@
-const http = require('http');
-const EventEmitter = require('events')
-const Router = require('./framework/Router')
 const Application = require('./framework/Application')
+const usersRouter = require('./src/user-router')
 const PORT = process.env.PORT || 5000
-const emitter = new EventEmitter()
+const jsonParser = require('./framework/parseJson')
+
+// const http = require('http');
+// const EventEmitter = require('events')
+// const Router = require('./framework/Router')
+// const emitter = new EventEmitter()
 
 
 const app = new Application()
-const router = new Router()
+// const router = new Router()
 
-router.get('/users', (req, res) => {
-    res.end('Hello User From Node.js')
-})
+// router.get('/users', (req, res) => {
+//     res.end('Hello User From Node.js')
+// })
 
-router.get('/posts', (req, res) => {
-    res.end('Hello Posts From Node.js')
-})
+// router.get('/posts', (req, res) => {
+//     res.end('Hello Posts From Node.js')
+// })
 
-app.addRouter(router)
+app.addRouter(usersRouter)
 
 app.listen(PORT, () => {console.log(`server have started on ${PORT} PORT`)})
 

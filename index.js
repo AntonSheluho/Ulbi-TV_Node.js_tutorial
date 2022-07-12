@@ -2,6 +2,7 @@ const Application = require('./framework/Application')
 const usersRouter = require('./src/user-router')
 const PORT = process.env.PORT || 5000
 const jsonParser = require('./framework/parseJson')
+const parseUrl = require('./framework/parseUrl')
 
 // const http = require('http');
 // const EventEmitter = require('events')
@@ -20,6 +21,8 @@ const app = new Application()
 //     res.end('Hello Posts From Node.js')
 // })
 app.use(jsonParser)
+app.use(parseUrl('http://localhost:5000'))
+
 app.addRouter(usersRouter)
 
 app.listen(PORT, () => {console.log(`server have started on ${PORT} PORT`)})

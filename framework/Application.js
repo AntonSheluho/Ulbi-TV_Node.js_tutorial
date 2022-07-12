@@ -14,8 +14,8 @@ module.exports = class Application {
     //     }
     // }
 
-    use(middlewares) {
-        this.middlewares.push(middlewares)
+    use(middleware) {
+        this.middlewares.push(middleware)
     }
 
     listen(port, callback) {
@@ -26,20 +26,28 @@ module.exports = class Application {
         Object.keys(router.endpoint).forEach(path => {
             const endpoint = router.endpoint[path];
             Object.keys(endpoint).forEach((method) => {
-                const handler = endpoint[method];
-                this.middlewares.forEach(middlewares => middlewares(req, res))
-                handler(req, res)
-                // this.emitter.on(this._getRouteMask(path, method), (req, res) => {
-                //     handler(req, res)
-                // })
+                this.emitter.on(this._getRouteMask(path, method), (req, res) => {
+                    const handler = endpoint[method];
+                    this.middlewares.forEach(middlewares => middlewares(req, res));
+                    handler(req, res)
+                })
             })
         })
     }
 
     _createServer() {
         return http.createServer((req, res) => {
-            const emitted = this.emitter.emit(this._getRouteMask(req.url, req.method), req, res)
-            if (!emitted) {res.end()}
+            let body = ''
+            req.on('data', (chunk) => {
+                body += chunk
+            })
+            req.on('end', (user) => {
+                if(body) {
+                    req.body = JSON.parse(body)
+                }
+                const emitted = this.emitter.emit(this._getRouteMask(req.url, req.method), req, res)
+                if (!emitted) {res.end()}
+            })
         })
     }
 

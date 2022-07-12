@@ -19,7 +19,7 @@ const app = new Application()
 // router.get('/posts', (req, res) => {
 //     res.end('Hello Posts From Node.js')
 // })
-
+app.use(jsonParser)
 app.addRouter(usersRouter)
 
 app.listen(PORT, () => {console.log(`server have started on ${PORT} PORT`)})

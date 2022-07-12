@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Ulbi-TV tutorial ",
   "main": "index.js",
-  "devDependencies": {},
   "dependencies": {
     "cross": "^1.0.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
+    "mongoose": "^6.4.4",
     "nodemon": "^2.0.19",
     "process": "^0.11.10"
   },

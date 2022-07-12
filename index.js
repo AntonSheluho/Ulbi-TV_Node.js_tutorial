@@ -1,8 +1,10 @@
 const Application = require('./framework/Application')
 const usersRouter = require('./src/user-router')
-const PORT = process.env.PORT || 5000
 const jsonParser = require('./framework/parseJson')
 const parseUrl = require('./framework/parseUrl')
+const mongoose = require('mongoose');
+
+const PORT = process.env.PORT || 5000
 
 // const http = require('http');
 // const EventEmitter = require('events')
@@ -25,7 +27,16 @@ app.use(parseUrl('http://localhost:5000'))
 
 app.addRouter(usersRouter)
 
-app.listen(PORT, () => {console.log(`server have started on ${PORT} PORT`)})
+const start = async () => {
+    try {
+        await mongoose.connect('mongodb+srv://Admin:rJYSt7S8Ns4eFeKH@cluster0.m8bcu.mongodb.net/?retryWrites=true&w=majority')
+        app.listen(PORT, () => {console.log(`server have started on ${PORT} PORT`)})
+    } catch(err) {
+        console.log(err)
+    }
+}
+console.log('1')
+start()
 
 // const server = http.createServer()
 
